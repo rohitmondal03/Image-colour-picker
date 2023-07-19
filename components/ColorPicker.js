@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styles from "./colorPicker.module.css";
+import Image from "next/image";
+import Link from "next/link";
 
 /**
  * --- TODO: More thing you could do to expand this project:
@@ -36,7 +38,11 @@ const ColorPicker = () => {
 
         <div className={styles.formSection}>
           <p>Select an image</p>
-          <input onChange={handleFileInput} type="file" accept="image/*" />
+          <input
+            onChange={handleFileInput}
+            type="file"
+            accept="image/*"
+          />
         </div>
 
         {image &&
@@ -57,20 +63,29 @@ const ColorPicker = () => {
           >
             <span>{color}</span>
           </button>
+          <p>Click above to copy color</p>
         </div>
 
         <span className={styles.shoutout}>
           Made with ❤️ by{" "}
-          <a href="https://github.com/rohitmondal03" target="_blank">
+          <Link
+            href="https://github.com/rohitmondal03"
+            target="_blank"
+          >
             Rohit Mondal
-          </a>
+          </Link>
         </span>
       </div>
 
       <div className={styles.rightColumn}>
         {image ? (
           <>
-            <img src={image} alt="Working image" />
+            <Image
+              src={image}
+              alt="Working image"
+              width={400}
+              height={100}
+            />
             <div
               style={{
                 backgroundImage: `url(${image})`,
